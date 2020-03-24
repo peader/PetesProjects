@@ -1,4 +1,3 @@
-# Experiments with MQTT
 For a while I've been meaning to tinker with MQTT and IOT in general. Although I've had a little exposure to the protocol in my work it's mostly been on the software integration side. I wanted to try to program some hardware, namely the very cool esp8266 development board.
 
 ## Setting up the MQTT broker

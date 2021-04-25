@@ -1,4 +1,4 @@
-I've been meaning to try out the very cool [StereoKit](https://stereokit.net/) on my Oculus device for a while now. As of yet there isn't a ready made Visual Studio Template for creatiing and deploying to Android devices like there is for [Hololens and UWP](https://marketplace.visualstudio.com/items?itemName=NickKlingensmith.StereoKitTemplates) devices.
+I've been meaning to try out the very cool [StereoKit](https://stereokit.net/) on my Oculus device for a while now. As of yet there isn't a ready made Visual Studio Template for creating and deploying to Android devices like there is for [Hololens and UWP](https://marketplace.visualstudio.com/items?itemName=NickKlingensmith.StereoKitTemplates) devices.
 I could just be patient and wait for Nick and the team to release the Android template or........ I could try build the source code and example android project there in :).
 Ok, here we go:
 

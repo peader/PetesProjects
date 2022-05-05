@@ -7,3 +7,6 @@ So living in Germany you tend to accumulate a fair amount of documentation. What
 I haven't really found any android application out there that does what I want so here I go down the road of trying to build my own.
 I want to see if I can leverage my dotnet knowledge and build a cross platform C# based application using the brand new .MAUI framework.
 Let's see how it goes :)
+
+## Approach
+- Dotnet MAUI in combination with the tesseract ocr nuget package: https://github.com/charlesw/tesseract/blob/master/docs/examples.md

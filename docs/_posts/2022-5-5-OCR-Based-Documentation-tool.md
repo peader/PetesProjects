@@ -10,3 +10,13 @@ Let's see how it goes :)
 
 ## Approach
 - Dotnet MAUI in combination with the tesseract ocr nuget package: https://github.com/charlesw/tesseract/blob/master/docs/examples.md
+- Come up with a strategy for categorizing and making the documentation easily searchable without performance loss over time.
+
+## First things first
+- Setup the project as an open source one on [GitHub](https://github.com/peader/CruftBuster).
+- Add a CI pipeline for building the android version of the application. Many thanks to the authors of this [blog article](https://blog.taranissoftware.com/building-net-maui-apps-with-github-actions) for the write up on using GitHub actions with .MAUI.
+
+## Next up
+- Add some unit testing.
+- Intergrate the tesseract nuget package.
+- Create a camera widget for capturing an image.

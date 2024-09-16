@@ -16,7 +16,7 @@ git checkout v12.2.0
 ```
 3. Open the repositories root folder in visual studio code.
 4. Install the platform io extension.
-5. 
+5. plug in your esp8266 board (make sure to choose the correct usb port that maps to the correct com port)
 ![_config.yml]({{ site.baseurl }}/images/config.png)
+6. Flash the esp8266 with the new firmware.
 
-The easiest way to make your first post is to edit this one. Go into /_posts/ and update the Hello World markdown file. For more instructions head over to the [Jekyll Now repository](https://github.com/barryclark/jekyll-now) on GitHub.

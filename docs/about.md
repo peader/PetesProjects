@@ -4,14 +4,5 @@ title: About
 permalink: /about/
 ---
 
-<!---
- Some information about you!
-
-### More Information
-
-A place to include any other types of information that you'd like to include about yourself.
-
-### Contact me
-
-[email@domain.com](mailto:email@domain.com)
--->
+I'm a Devops engineer with several years experience as a software engineer. This gives me a unique perspective into the needs of my software developer colleagues. Where possible I use industry standard tools to deploy, monitor, orchestrate and document our software solutions and processes. If those tools don't exist or need customization I have no problem rolling up my sleeves and programming something new be it in python, go, c#, bash or powershell.
+I'll make it work and make it maintable. 

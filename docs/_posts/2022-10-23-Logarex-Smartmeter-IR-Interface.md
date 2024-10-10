@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Logarex Smart Meter IR Inteface
+title: Logarex Smart Meter IR Interface
 ---
 ## Background
 We recently had a logarex smart electricity meter installed in our house to replace the old analogue one. This type of meter comes with an IR interface that you can query power comsumption values with. With a little help from an esp8266 and a IR reader/writer we should be able to make these values availabe on our home network.

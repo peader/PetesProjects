@@ -1,0 +1,39 @@
+I"�<p>For a while I’ve been meaning to tinker with MQTT and IOT in general. Although I’ve had a little exposure to the protocol in my work it’s mostly been on the software integration side. I wanted to try to program some hardware, namely the very cool esp8266 development board.</p>
+
+<h2 id="setting-up-the-mqtt-broker">Setting up the MQTT broker</h2>
+<p>For those of you familiar with the MQTT protocol it requires a server side “broker” to handle incoming messages and outgoing messages. In my mind I like to think of it like a modern take on those old timey switch boards :)
+Since the MQTT protocol is so light weight one of my raspberry pi’s seemed like the perfect piece of hardware to act as my server broker.</p>
+
+<p>I ssh’d onto one of my pi’s, I happened to be lying in bed and I could use the juice app on my phone to establish a terminal window, and ran the following commands to get a Mosquitto mqtt broker up and running:</p>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apt-get <span class="nb">install </span>mosquitto
+mosquitto <span class="nt">-d</span>
+</code></pre></div></div>
+<p>I then did a quick test to check the broker was working:
+I needed two terminal windows for this. In the first I ran the following commands:</p>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apt-get <span class="nb">install </span>mosquitto-clients
+mosquitto_sub <span class="nt">-d</span> <span class="nt">-t</span> testingtesting
+</code></pre></div></div>
+<p>In the second terminal window I ran this command:</p>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mosquitto_pub <span class="nt">-d</span> <span class="nt">-t</span> testingtesting <span class="nt">-m</span> <span class="s2">"Hello world!"</span>
+</code></pre></div></div>
+<p>Great now onto the next step.</p>
+
+<h2 id="setting-up-the-esp8266-board">Setting up the esp8266 board</h2>
+<p>I used the arduino IDE to write the code I used on my esp8266 board. There are plenty of tutorials out there on how to get the correct drivers and libraries to do this.
+I decided to start off by controlling a single led via the “onoffswitch” MQTT channel. When the message “on” is sent the led should switch on and when “off” is sent then the led should turn off. Simple right :)
+Here’s a link to the code I used:
+<a href="https://github.com/peader/PetesProjects/blob/master/mqtt_experiments/esp8266_lightswitch/esp8266Firmware/mqttfirmware/mqttfirmware.ino">esp8266 code</a></p>
+
+<h2 id="setting-up-the-android-app">Setting up the android app</h2>
+<p>I could have sent messages to my broker and thus my esp8266 board via command line in a terminal window like I did when testing the broker. I thought it would be cooler to try and build a little android app to do the same with a nice UI.
+Android studio is super nice to work with and setup time for deploying an app to a phone is relatively short. Again there are plenty of resources out there describing how to do just that.
+Here’s a link to the code for the android app I built:
+<a href="https://github.com/peader/PetesProjects/tree/master/mqtt_experiments/esp8266_lightswitch/androidClient">android app</a>
+A quick shout out to wildan2711 who’s <a href="https://github.com/wildan2711/mqtt-android-tutorial/blob/master/app/src/main/java/helpers/MqttHelper.java">mqtthelper</a> I modified for this project.</p>
+
+<p>And there it is. A super overengineered light switch but a good basis for future IOT projects :)</p>
+
+<p><img src="../images/MQTTExperiments/esp8266LightSwitch.jpg" alt="esp8266" title="the esp8266 development board" />
+<img src="../images/MQTTExperiments//mqttAndroidApp.jpg" alt="AndroidApp" title="The MQTT APP" /></p>
+
+:ET

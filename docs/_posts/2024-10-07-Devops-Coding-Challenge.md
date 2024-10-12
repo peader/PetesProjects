@@ -25,7 +25,7 @@ This part of the challenge was relatively straight forward, at least the ansible
 I did encounter some issues getting docker, act and kubernetes installed on the raspberry pi. These issues all boiled down to the architecture (arm64) not being the standard architecture to deploy these tools onto. Another issue was that the raspberry pi does not come with cgroups enabled as standard so that's something you need to explicitly set for docker to function. 
 
 ## The application
-![moose-facts]({{ site.baseurl }}/images/moose-facts.jpg)
+![moose-facts]({{ site.baseurl }}/images/moose-facts.JPG)
 For the backend restapi server I chose python and flask. I use python quite a bit in work and like it's simplicity. 
 For the frontend I chose nginx together with it's builtin index.html to call and display results from the backend server. 
 The application itself displays moose facts at random from an array of moose facts stored on the backend. 
@@ -52,7 +52,7 @@ Originally I wanted to use gitlab and a gitlab runner as my ci/cd framework. I q
 - Another arm64 problem popped up. Namely, the widely adopted helm GitHub actions module does not support this architecture. I needed to download the modules source code and explicitly target the arm64 helm binaries to get it to work
 
 ## Monitoring 
-![kuma-uptime]({{ site.baseurl }}/images/kuma-uptime.jpg)
+![kuma-uptime]({{ site.baseurl }}/images/kuma-uptime.JPG)
 I used the open source Kuma Uptime as my monitoring solution. I was limited in the time I had left to complete the challenge and therefore setup the monitoring dashboards manually.
 
 ### Challenges

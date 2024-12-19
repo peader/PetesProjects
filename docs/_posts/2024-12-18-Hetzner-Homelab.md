@@ -157,6 +157,7 @@ vim /etc/network/interfaces
 ``` txt
     post-up iptables -t nat -A PREROUTING -i enp0s31f6 -p udp --dport 51822 -j DNAT --to <wireguard vm ip>:51822
     post-down iptables -t nat -D PREROUTING -i enp0s31f6 -p udp --dport 51822 -j DNAT --to <Hetzner IP>:51822
+    ip route add 192.168.178.0/24 via 192.168.200.11 dev vmbr99
 ```
 
 - save exit and restart the server (you may also need to restart the vms if you have not set auto reboot on restart).

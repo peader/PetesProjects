@@ -20,7 +20,7 @@ The following is a step by step guide for setting up a wireguard server in a pro
 I did not get this working the first time and it took a lot of trial and error to get it working. I also referenced many youtube videos and blog tutorials on my journey :)
 
 ## Instructions
-- Purchase a server from the Hetzner dedicated server [auction](https://www.hetzner.com/sb/). Apart from needing to verify yout identity this process was is quite straight forward. 
+- Purchase a server from the Hetzner dedicated server [auction](https://www.hetzner.com/sb/). Apart from needing to verify your identity this process was is quite straight forward. 
 - Upload the public ssh key from your laptop and boot into their rescue OS after the order has been processed.
 
 ``` bash
@@ -46,7 +46,7 @@ passwd
 - Open a browser and go to the proxmox web interface at https://hetzner-host-ip:8006/
 - enter the user name "root" and the password you set in the previous step.
 - We're going to need a network bridge for our proxmox vms to be able to connect to each other and the outside world.
-**Note:** We using the subnet 192.168.200.0/24 for our network. This was an abitrary choice and is up to you to change. The main thing is that it doesn't overlap with the subnet behind your fritzbox. 
+**Note:** We using the subnet 192.168.200.0/24 for our network. This was an arbitrary choice and is up to you to change. The main thing is that it doesn't overlap with the subnet behind your fritzbox. 
 
 ``` bash
 vim /etc/network/interfaces
@@ -61,6 +61,7 @@ iface vmbr99 inet static
         bridge-ports none
         bridge-stp off
         bridge-fd 0
+        up ip route add <fritzbox subnet>/24 via 192.168.200.11 dev vmbr99
 
     post-up   echo 1 > /proc/sys/net/ipv4/ip_forward
     post-up   iptables -t nat -A POSTROUTING -s '192.168.200.0/24' -o enp0s31f6 -j MASQUERADE
@@ -157,7 +158,6 @@ vim /etc/network/interfaces
 ``` txt
     post-up iptables -t nat -A PREROUTING -i enp0s31f6 -p udp --dport 51822 -j DNAT --to <wireguard vm ip>:51822
     post-down iptables -t nat -D PREROUTING -i enp0s31f6 -p udp --dport 51822 -j DNAT --to <Hetzner IP>:51822
-    ip route add 192.168.178.0/24 via 192.168.200.11 dev vmbr99
 ```
 
 - save exit and restart the server (you may also need to restart the vms if you have not set auto reboot on restart).

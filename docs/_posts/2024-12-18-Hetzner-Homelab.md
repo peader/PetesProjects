@@ -76,6 +76,11 @@ passwd
 
 - Open a browser and go to the proxmox web interface at https://hetzner-host-ip:8006/
 - enter the user name "root" and the password you set in the previous step.
+- Enable packet forwarding on the host by opening the /etc/sysctl.conf file and uncommenting the following line:
+``` txt
+net.ipv4.ip_forward=1
+net.ipv6.conf.all.forwarding=1
+```
 - We're going to need a network bridge for our proxmox vms to be able to connect to each other and the outside world.
 **Note:** We using the subnet 192.168.200.0/24 for our network. This was an arbitrary choice and is up to you to change. The main thing is that it doesn't overlap with the subnet behind your fritzbox. 
 

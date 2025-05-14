@@ -37,21 +37,22 @@ installimage
 ![installimage]({{ site.baseurl }}/images/hetznerhomelab/hetznerinstallimage.JPG)
 ![installimage2]({{ site.baseurl }}/images/hetznerhomelab/hetznerinstallimage2.JPG)
 - Update the settings with the following (I got this information from medium blogpost: https://medium.com/@artem_lajko/setup-ve-with-proxmox-on-hetzner-single-mode-6b76061efcdb):
+
 ``` txt
-#1. 
+1. 
 FROM: 
 SWRAIDLEVEL 1  
 TO: 
 SWRAIDLEVEL 0 (to use all Storage sda+sdb)
 
-#2. 
+2. 
 
 FROM:
 HOSTNAME Proxmox-Ve.localhost
 TO:
 proxmox-single.lab.local (you can call it what ever you want)
 
-#3. 
+3. 
 
 FROM: 
 PART /boot ext3 512M 
@@ -67,7 +68,9 @@ PART lvm vg0 all
 LV vg0 root / ext3 100G
 LV vg0  swap swap swap **32**G  --> (available RAM * 1/2)
 LV vg0 data /var/lib/vz ext3 400G --> (Remaining memory after deduction of root for storing images and containers) 
+
 ```
+
 - If you haven't added a password to the host system yet you'll need to. 
 
 ``` bash

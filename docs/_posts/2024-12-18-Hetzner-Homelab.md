@@ -160,7 +160,7 @@ wg genkey > fritzbox.key
 wg pubkey < fritzbox.key > fritzbox.pub
 ```
 
-- Create the wireguard file with the following contents:
+- Create the wireguard file at location /etc/wireguard/wg0.conf with the following contents:
 
 ``` txt
 # local settings for proxmox Host
@@ -176,10 +176,10 @@ PreUp = sysctl -w net.ipv4.ip_forward=1
 [Peer]
 PublicKey = <the key in fritzbox.pub>
 Endpoint = <fritzbox dyanamic ip>:59741
-AllowedIPs = 10.0.0.1/32, 192.168.178.122/24
+AllowedIPs = 10.0.0.1/32, 192.168.178.1/24
 ```
 
-**Note**: Normally comsumer fritzboxes don't have a static public ip but you can register with firtzbox and open a url specific to your router that will always resolve to the correct public ip address. More info here: https://en.avm.de/service/knowledge-base/dok/FRITZ-Box-7590/30_Setting-up-dynamic-DNS-in-the-FRITZ-Box/
+**Note**: Normally comsumer fritzboxes don't have a static public ip but you can register with fritzbox and open a url specific to your router that will always resolve to the correct public ip address. More info here: https://en.avm.de/service/knowledge-base/dok/FRITZ-Box-7590/30_Setting-up-dynamic-DNS-in-the-FRITZ-Box/
 - Start the wireguard service:
 
 ``` bash
@@ -209,14 +209,6 @@ vim /etc/network/interfaces
 - Upload a wireguard configuration file with the following contents:
 
 ``` txt
-# local settings for fritzbox Host
-[Interface]
-PrivateKey = <the key in fritzbox.key>
-Address = <fritzbox-internal-ip>/24
-ListenPort = 51821
-DNS = 1<fritzbox-internal-ip>
-DNS = fritz.box
-
 
 # remote settings for proxmox Host
 [Peer]
@@ -224,6 +216,14 @@ PublicKey = <the key in wireguard.pub>
 Endpoint = <Hetzner IP>:51822
 AllowedIPs = 192.168.200.0/24,10.0.0.2/32
 PersistentKeepalive = 25
+
+# local settings for fritzbox Host
+[Interface]
+PrivateKey = <the key in fritzbox.key>
+Address = <fritzbox-internal-ip>/24
+ListenPort = 51821
+DNS = <fritzbox-internal-ip>
+DNS = fritz.box
 ```
 
 **Note**: Make sure to enter your fritzboxes ip address in the Address section. This actually doesn't conform to the wireguard standard implementation. It seems fritzbox has a non standard implementation of the wireguard protocol. 

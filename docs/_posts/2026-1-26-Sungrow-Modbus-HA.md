@@ -17,7 +17,7 @@ Below are the steps I took to get it working:
 - Next you'll be prompted to press the button on the dongle 3 times to enable the dongles local wifi network, do that.
 - on the password login page enter the credentials user: "admin"" and password: "pw8888"
 - Goto Settings -> Communication parameters and make sure the switch "Inverter ETH port" is on.
-![enable_eth]({{ site.baseurl }}/images/sungrow-modbus-ha/enable_eth.jpg)
+![enable_eth]({{ site.baseurl }}/images/sungrow-modbus-ha/enable-eth.jpg)
 - Goto Settings -> Communication parameters -> Network parameters and make sure the switch "Obtain IP address automatically" is on.
 We are now finished with the app. Next we need to plug the ethernet cable from the LAN port in the inverter to an access point, in my case my fritz box router.
 - Plug in one end of the ethernet cable into the lan port of the inverter, it's located behing the winet dongle and you must unscrew the cap to access it.
